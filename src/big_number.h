@@ -26,7 +26,13 @@ public:
     big_number &operator= ( const long &other );
     big_number &operator= ( const char* other );
     big_number operator+ ( const big_number &other );
+    big_number operator+ ( const int &other );
+    big_number operator+ ( const long &other );
+    big_number operator+ ( const char* other );
     big_number operator- ( const big_number &other );
+    big_number operator- ( const int &other );
+    big_number operator- ( const long &other );
+    big_number operator- ( const char* other );
     friend ostream &operator<< ( ostream& os, const big_number &bn );
     bool operator< ( const big_number &other );
     bool operator<= ( const big_number &other );

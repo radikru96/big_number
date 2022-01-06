@@ -25,7 +25,13 @@ int main( int argc, char **argv )
         cout << bn << " + " << sec << "=\t" << (bn + sec) << endl;
     else if ( sign == "-" )
         cout << bn << " - " << sec << "=\t" << (bn - sec) << endl;
-    else
-        cout << "invalid second arg\n";
+    else{
+        cout << "invalid second arg\n"; return 0;}
+    cout << bn << " - " << "int" << "=\t" << (bn - atoi(argv[3])) << endl;
+    cout << bn << " - " << "long" << "=\t" << (bn - atol(argv[3])) << endl;
+    cout << bn << " - " << "char" << "=\t" << (bn - argv[3]) << endl;
+    cout << bn << " + " << "int" << "=\t" << (bn + atoi(argv[3])) << endl;
+    cout << bn << " + " << "long" << "=\t" << (bn + atol(argv[3])) << endl;
+    cout << bn << " + " << "char" << "=\t" << (bn + argv[3]) << endl;
     return 0;
 }

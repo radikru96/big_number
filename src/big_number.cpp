@@ -81,11 +81,40 @@ big_number big_number::operator + ( const big_number &other )
     else
     {
         if ( this->number[0] == '-' )
-            printf( "first number is negative\n" );
-        if ( other.number[0] == '-' )
-            printf( "second number is negative\n" );
+        {
+            big_number negative(*this);
+            big_number positive(other);
+            negative.number.erase(negative.number.begin());
+            value = positive - negative;
+            // printf( "first number is negative\n" );
+        }
+        else
+        {
+            big_number negative(other);
+            negative.number.erase(negative.number.begin());
+            value = *this - negative;
+            // printf( "second number is negative\n" );
+        }
     }
     return value;
+}
+
+big_number big_number::operator + ( const int &other )
+{
+    big_number value( other );
+    return *this + value;
+}
+
+big_number big_number::operator + ( const long &other )
+{
+    big_number value( other );
+    return *this + value;
+}
+
+big_number big_number::operator + ( const char* other )
+{
+    big_number value( other );
+    return *this + value;
 }
 
 big_number big_number::add_operation( const big_number first, const big_number second )
@@ -154,6 +183,24 @@ big_number big_number::operator- ( const big_number &other )
             value.number.insert( 0, "-" );
     }
     return value;
+}
+
+big_number big_number::operator - ( const int &other )
+{
+    big_number value( other );
+    return *this - value;
+}
+
+big_number big_number::operator - ( const long &other )
+{
+    big_number value( other );
+    return *this - value;
+}
+
+big_number big_number::operator - ( const char* other )
+{
+    big_number value( other );
+    return *this - value;
 }
 
 big_number big_number::sub_operation( const big_number first, const big_number second )
