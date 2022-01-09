@@ -11,6 +11,16 @@ big_number::big_number()
     number = '0';
 }
 
+big_number::big_number( const big_number& num )
+{
+    number = num.number;
+}
+
+big_number::big_number( const short& num)
+{
+    number = to_string( num );
+}
+
 big_number::big_number( const int& num)
 {
     number = to_string( num );
@@ -21,9 +31,9 @@ big_number::big_number( const long& num)
     number = to_string( num );
 }
 
-big_number::big_number( const big_number& num )
+big_number::big_number( const long long& num)
 {
-    number = num.number;
+    number = to_string( num );
 }
 
 big_number::big_number( const char* num )
@@ -42,6 +52,12 @@ big_number& big_number::operator = ( const big_number &other )
     return *this;
 }
 
+big_number& big_number::operator = ( const short &other )
+{
+    this->number = to_string( other );
+    return *this;
+}
+
 big_number& big_number::operator = ( const int &other )
 {
     this->number = to_string( other );
@@ -49,6 +65,12 @@ big_number& big_number::operator = ( const int &other )
 }
 
 big_number& big_number::operator = ( const long &other )
+{
+    this->number = to_string( other );
+    return *this;
+}
+
+big_number& big_number::operator = ( const long long &other )
 {
     this->number = to_string( other );
     return *this;
@@ -99,7 +121,19 @@ big_number big_number::operator + ( const big_number &other )
     return value;
 }
 
+big_number big_number::operator + ( const short &other )
+{
+    big_number value( other );
+    return *this + value;
+}
+
 big_number big_number::operator + ( const int &other )
+{
+    big_number value( other );
+    return *this + value;
+}
+
+big_number big_number::operator + ( const long long &other )
 {
     big_number value( other );
     return *this + value;
@@ -185,6 +219,12 @@ big_number big_number::operator- ( const big_number &other )
     return value;
 }
 
+big_number big_number::operator - ( const short &other )
+{
+    big_number value( other );
+    return *this - value;
+}
+
 big_number big_number::operator - ( const int &other )
 {
     big_number value( other );
@@ -192,6 +232,12 @@ big_number big_number::operator - ( const int &other )
 }
 
 big_number big_number::operator - ( const long &other )
+{
+    big_number value( other );
+    return *this - value;
+}
+
+big_number big_number::operator - ( const long long &other )
 {
     big_number value( other );
     return *this - value;
@@ -299,11 +345,71 @@ bool big_number::operator< ( const big_number &other )
     }
 }
 
+bool big_number::operator< ( const short &other )
+{
+    big_number value(other);
+    return *this < value;
+}
+
+bool big_number::operator< ( const int &other )
+{
+    big_number value(other);
+    return *this < value;
+}
+
+bool big_number::operator< ( const long &other )
+{
+    big_number value(other);
+    return *this < value;
+}
+
+bool big_number::operator< ( const long long &other )
+{
+    big_number value(other);
+    return *this < value;
+}
+
+bool big_number::operator< ( const char* other )
+{
+    big_number value(other);
+    return *this < value;
+}
+
 bool big_number::operator> ( const big_number &other )
 {
     if ( *this <= other )
         return false;
     return true;
+}
+
+bool big_number::operator> ( const short &other )
+{
+    big_number value(other);
+    return *this > value;
+}
+
+bool big_number::operator> ( const int &other )
+{
+    big_number value(other);
+    return *this > value;
+}
+
+bool big_number::operator> ( const long &other )
+{
+    big_number value(other);
+    return *this > value;
+}
+
+bool big_number::operator> ( const long long &other )
+{
+    big_number value(other);
+    return *this > value;
+}
+
+bool big_number::operator> ( const char* other )
+{
+    big_number value(other);
+    return *this > value;
 }
 
 bool big_number::operator>= ( const big_number &other )
@@ -314,6 +420,36 @@ bool big_number::operator>= ( const big_number &other )
         return false;
 }
 
+bool big_number::operator>= ( const short &other )
+{
+    big_number value(other);
+    return *this >= value;
+}
+
+bool big_number::operator>= ( const int &other )
+{
+    big_number value(other);
+    return *this >= value;
+}
+
+bool big_number::operator>= ( const long &other )
+{
+    big_number value(other);
+    return *this >= value;
+}
+
+bool big_number::operator>= ( const long long &other )
+{
+    big_number value(other);
+    return *this >= value;
+}
+
+bool big_number::operator>= ( const char* other )
+{
+    big_number value(other);
+    return *this >= value;
+}
+
 bool big_number::operator<= ( const big_number &other )
 {
     if ( *this < other || *this == other )
@@ -322,14 +458,104 @@ bool big_number::operator<= ( const big_number &other )
         return false;
 }
 
+bool big_number::operator<= ( const short &other )
+{
+    big_number value(other);
+    return *this <= value;
+}
+
+bool big_number::operator<= ( const int &other )
+{
+    big_number value(other);
+    return *this <= value;
+}
+
+bool big_number::operator<= ( const long &other )
+{
+    big_number value(other);
+    return *this <= value;
+}
+
+bool big_number::operator<= ( const long long &other )
+{
+    big_number value(other);
+    return *this <= value;
+}
+
+bool big_number::operator<= ( const char* other )
+{
+    big_number value(other);
+    return *this <= value;
+}
+
 bool big_number::operator== ( const big_number &other )
 {
     return this->number==other.number;
 }
 
+bool big_number::operator== ( const short &other )
+{
+    big_number value(other);
+    return *this == value;
+}
+
+bool big_number::operator== ( const int &other )
+{
+    big_number value(other);
+    return *this == value;
+}
+
+bool big_number::operator== ( const long &other )
+{
+    big_number value(other);
+    return *this == value;
+}
+
+bool big_number::operator== ( const long long &other )
+{
+    big_number value(other);
+    return *this == value;
+}
+
+bool big_number::operator== ( const char* other )
+{
+    big_number value(other);
+    return *this == value;
+}
+
 bool big_number::operator!= ( const big_number &other )
 {
     return !(*this==other);
+}
+
+bool big_number::operator!= ( const short &other )
+{
+    big_number value(other);
+    return *this != value;
+}
+
+bool big_number::operator!= ( const int &other )
+{
+    big_number value(other);
+    return *this != value;
+}
+
+bool big_number::operator!= ( const long &other )
+{
+    big_number value(other);
+    return *this != value;
+}
+
+bool big_number::operator!= ( const long long &other )
+{
+    big_number value(other);
+    return *this != value;
+}
+
+bool big_number::operator!= ( const char* other )
+{
+    big_number value(other);
+    return *this != value;
 }
 
 big_number::~big_number()
