@@ -11,12 +11,19 @@ int main( int argc, char **argv )
     long long val_ll = 4;
     // char *val_c = argv[1];
     long val_l = 3;
-    int val_i = 2;
+    int val_i = 12;
     short val_s = 1;
+    big_number bns(val_s);
+    big_number bnl(val_l);
+    big_number bnll(val_ll);
     cout << val_b + val_s << "\tshort\n";
     cout << val_b + val_i << "\tint\n";
     cout << val_b + val_l << "\tlong\n";
     cout << val_b + val_ll << "\tlong long\n";
+    cout << (val_i < val_b) << "\tint<big_n\n";
+    cout << (val_l < val_b) << "\tlong<big_n\n";
+    cout << (val_ll < val_b) << "\tlonglong<big_n\n";
+    cout << (val_s < val_b) << "\tshort<big_n\n";
     // cout << val_b.operator+( argv[1]) << "\tchar\n";
     // if ( argc < 2 )
     // {

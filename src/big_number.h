@@ -18,11 +18,13 @@ protected:
 public:
     big_number();
     big_number( const big_number& num );
-    big_number( const short& num);
-    big_number( const int& num);
-    big_number( const long& num);
-    big_number( const long long& num);
     big_number( const char* num );
+    template <class T>
+    big_number( const T &num );
+    // big_number( const short& num);
+    // big_number( const int& num);
+    // big_number( const long& num);
+    // big_number( const long long& num);
     big_number &operator= ( const big_number &other );
     big_number &operator= ( const short &other );
     big_number &operator= ( const int &other );
@@ -78,6 +80,12 @@ public:
     bool operator!= ( const long &other );
     bool operator!= ( const long long &other );
     bool operator!= ( const char* other );
+    // template <class T>
+    // friend inline bool operator< ( const T &left_val, const big_number &other );
+    friend bool operator< ( const short &short_this, const big_number &other );
+    friend bool operator< ( const int &int_this, const big_number &other );
+    friend bool operator< ( const long &long_this, const big_number &other );
+    friend bool operator< ( const long long &long_long_this, const big_number &other );
     ~big_number();
 };
 

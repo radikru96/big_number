@@ -16,30 +16,33 @@ big_number::big_number( const big_number& num )
     number = num.number;
 }
 
-big_number::big_number( const short& num)
-{
-    number = to_string( num );
-}
-
-big_number::big_number( const int& num)
-{
-    number = to_string( num );
-}
-
-big_number::big_number( const long& num)
-{
-    number = to_string( num );
-}
-
-big_number::big_number( const long long& num)
-{
-    number = to_string( num );
-}
-
 big_number::big_number( const char* num )
 {
     number = num;
 }
+
+template <class T>
+big_number::big_number( const T &num )
+{
+    number = to_string( num );
+}
+
+// big_number::big_number( const short& num)
+// {
+//     number = to_string( num );
+// }
+// big_number::big_number( const int& num)
+// {
+//     number = to_string( num );
+// }
+// big_number::big_number( const long& num)
+// {
+//     number = to_string( num );
+// }
+// big_number::big_number( const long long& num)
+// {
+//     number = to_string( num );
+// }
 
 string &big_number::get_number()
 {
@@ -305,6 +308,37 @@ big_number big_number::sub_operation( const big_number first, const big_number s
 ostream& operator<< ( ostream& os, const big_number &bn )
 {
     return os << bn.number;
+}
+
+// template <class T>
+// inline bool operator< ( const T &left_val, const big_number &other )
+// {
+//     // big_number value( left_val );
+//     return big_number(left_val) < other;
+// }
+
+bool operator< ( const short &short_this, const big_number &other )
+{
+    big_number value( short_this );
+    return value < other;
+}
+
+bool operator< ( const int &int_this, const big_number &other )
+{
+    big_number value( int_this );
+    return value < other;
+}
+
+bool operator< ( const long &long_this, const big_number &other )
+{
+    big_number value( long_this );
+    return value < other;
+}
+
+bool operator< ( const long long &long_long_this, const big_number &other )
+{
+    big_number value( long_long_this );
+    return value < other;
 }
 
 bool big_number::operator< ( const big_number &other )
